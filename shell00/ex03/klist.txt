@@ -1,5 +1,0 @@
-Credentials cache: API:BF6F1A74-12FB-4E7B-AA05-0DEB2DF93EC2
-        Principal: vhaefeli@42LAUSANNE.CH
-
-  Issued                Expires               Principal
-Jul  6 11:26:07 2021  Jul  6 21:26:07 2021  krbtgt/42LAUSANNE.CH@42LAUSANNE.CH
