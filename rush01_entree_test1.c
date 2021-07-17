@@ -6,62 +6,103 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 17:48:34 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/07/17 19:58:42 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/07/17 21:09:31 by vhaefeli         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+t_bool	test1(int **tab_test1);
+t_bool	test4(int **tab_test1);
 
-t_bool enter_test1(char )
+t_bool fill_tab_test(char **argv )
 
 {
-	int up[4];
-	int down[4];
-	int left[4];
-	int right[4];
+	int	tab_test [4][4]
+	int l;
+	int c;
+	
+	l = 0;
+	c = 0;
+	p = 0;
+	while (l < 4)
+	{
+		while (c < 4)
+		{
+			tab_test[l][c] = argv[1][p]
+			c++;
+			p = p + 2;
+		}
+		c = 0;
+		l++;
+	}
+	l = 0;
+	c = 0;
+	test1(tab_test, l, c);
+	l = 0;
+	c = 0;
+	test4(tab_test, l, c);
+
+}
+
+
+t_bool	test1(int **tab_test1, int l, int c)
+{
 	int t;
-	int i;
-
 	t = 0;
-	i = 0;
-	while (i < 4)
-	{
-		if(up[i] == 1)
-		{
-			t++;
-			i++;
-		}
-		else
-		{
-			i++;
-		}
-	}
-	if(t != 1)
-	{
-		return (false);
-	}
-	else
-	{
-		return (true);
-	}
 
-	while (i < 4)
+	while (c < 4)
 	{
-		if(up[i] == 4)
+		while (l < 4)
 		{
-			t++;
-			i++;
+			if(tab_test1[l][c] == 1)
+			{
+				t++;
+				l++;
+			}
+			else
+			{
+				l++;
+			}
+		}
+		if(t != 1)
+		{
+		return (false);
 		}
 		else
 		{
-			i++;
+			return (true);
 		}
-	}
-	if(t > 1)
-	{
-		return (false);
-	}
-	else
-	{
-		return (true);
+	c++
+	t = 0;
 	}
 }
 
+t_bool	test4(int **tab_test1)
+{
+	int t;
+	t = 0;
+
+	while (c < 4)
+	{
+		while (l < 4)
+		{
+			if(tab_test1[l][c] == 4)
+			{
+				t++;
+				l++;
+			}
+			else
+			{
+				l++;
+			}
+		}
+		if(t > 1)
+		{
+		return (false);
+		}
+		else
+		{
+			return (true);
+		}
+	c++
+	t = 0;
+	}
+}
