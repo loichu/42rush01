@@ -6,7 +6,7 @@
 /*   By: jhermon- <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 19:26:10 by jhermon-          #+#    #+#             */
-/*   Updated: 2021/07/18 22:05:21 by jhermon-         ###   ########.fr       */
+/*   Updated: 2021/07/18 22:14:27 by jhermon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "functions.h"
@@ -65,12 +65,10 @@ char	ft_check_lines_deep(int **grid)
 	int		*count;
 
 	count = ft_count_numbers(grid);
-	if (!count)
-		return (0);
 	while (count[0] < 4 || count[1] < 4 || count[2] < 4 || count[3] < 4)
 	{
-		if (!ft_check_deep_rules_count(grid, count))
-			return (0);
+		ft_check_deep_rules_count(grid, count);
+		count = ft_count_numbers(grid);
 	}
 	free(count);
 	return (1);

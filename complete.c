@@ -6,7 +6,7 @@
 /*   By: jhermon- <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 20:43:07 by jhermon-          #+#    #+#             */
-/*   Updated: 2021/07/18 22:02:57 by jhermon-         ###   ########.fr       */
+/*   Updated: 2021/07/18 22:15:26 by jhermon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "functions.h"
@@ -20,9 +20,7 @@ char	ft_complete(int **grid)
 	{
 		if (!ft_check_flags(grid))
 			return (0);
-		print_grid(grid);
 		grid = ft_rotate_grid(grid);
-		print_grid(grid);
 		i++;
 	}
 	i = 0;
