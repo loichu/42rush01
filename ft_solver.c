@@ -6,11 +6,12 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 04:29:20 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 09:36:39 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 12:24:06 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 #include <stdlib.h>
 #include "main.h"
 

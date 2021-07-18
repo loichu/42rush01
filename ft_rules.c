@@ -6,7 +6,7 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 04:15:55 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 09:24:53 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 09:55:45 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ char	ft_rule32(int *line)
 {
 	if (line[0] == 3 && line[5] == 2)
 	{
-		if (line[3] == 0 || line[3] == 3)
-			line[3] = 3;
+		if (line[3] == 0 || line[3] == 4)
+			line[3] = 4;
 		else
 			return (0);
 	}

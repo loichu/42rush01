@@ -6,7 +6,7 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 00:05:53 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 09:39:24 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 12:32:26 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 	
 	if (argc != 2 || ft_strlen(argv[1]) != 31)
 	{
-		write(1, "Error", 5);
+		write(1, "Error\n", 6);
 		return (1);
 	}
 
@@ -50,12 +50,22 @@ int	main(int argc, char **argv)
 	int **views = parse_args(argv[1]);
 	if (!views)
 	{
-		write(1, "Error", 5);
+		write(1, "Error\n", 6);
 		return (1);
 	}
 	//int	**grid = init_grid(up, down, left, right);
 	int	**grid = init_grid(views[0], views[1], views[2], views[3]);
+	printf("Builded grid:\n");
 	print_grid(grid);
+	ft_check_lines(grid);
+	printf("\nApplied rules:\n");
+	print_grid(grid);
+	if (!ft_complete(grid))
+		write(1, "Error\n", 6);
+	printf("\nCompleted:\n");
+	print_grid(grid);
+
+
 	return (0);
 }
 

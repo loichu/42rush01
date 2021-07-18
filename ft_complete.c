@@ -6,11 +6,13 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 05:15:49 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 09:38:14 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 14:30:43 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <stdio.h>
+#include <unistd.h>
 #include "main.h"
 
 char	ft_complete(int **grid)
@@ -36,16 +38,33 @@ char	ft_complete(int **grid)
 	return (1);
 }
 
+int	*ft_init_count(void)
+{
+	int	*count;
+	int	i;
+
+	count = malloc(4 * sizeof(int));
+	i = 0;
+	while (i < 4)
+	{
+		count[i] = 0;
+		i++;
+	}
+	return (count);
+}
+
 char	ft_check_flags(int **grid)
 {
 	int i;
 	int j;
 	char	**flags;
-	int	count[4];
+	int	*count;
 
+	count = ft_init_count();
 	flags = ft_set_flags(grid);
 	if (!flags)
 		return (0);
+	//write(1, "set flags", 9);
 	i = 0;
 	while (i < 4)
 	{
@@ -58,6 +77,7 @@ char	ft_check_flags(int **grid)
 		}
 		i++;
 	}
+	printf("\n%d\t%d\t%d\t%d", count[0], count[1], count[2], count[3]);
 	j = 0;
 	while (j < 4)
 	{
@@ -65,8 +85,8 @@ char	ft_check_flags(int **grid)
 			ft_complete_num(grid, flags, j + 1);
 		j++;
 	}
-	ft_free_flags(flags);
 	free(count);
+	ft_free_flags(flags);
 	return (0);
 }
 
@@ -91,6 +111,7 @@ void	ft_complete_num(int **grid, char **flags, int num)
 				i = 0;
 				while (i < 4)
 				{
+					printf("\nline: %d\tcol: %d\tval: %d", i, j, grid[i][j]);
 					if (grid[i][j] == num)
 					{
 						found = 1;
@@ -99,27 +120,15 @@ void	ft_complete_num(int **grid, char **flags, int num)
 					i++;
 				}
 				if (!found)
+				{
+					printf("found %d", grid[line_found][j]);
 					grid[line_found][j] = num;
+				}
 				j++;
 			}
 		}
 		i++;
 	}
-}
-
-int	*ft_init_count(void)
-{
-	int	i;
-	int	*count;
-
-	count = malloc(4 * sizeof(int));
-	i = 0;
-	while (i < 4)
-	{
-		count[i] = 0;
-		i++;
-	}
-	return count;
 }
 
 char	**ft_set_flags(int **grid)
@@ -137,15 +146,17 @@ char	**ft_set_flags(int **grid)
 		{
 			if (grid[i + 1][j + 1] != 0)
 			{
-				if (flags[i][grid[i][j] - 1])
+				if (flags[i][grid[i + 1][j + 1] - 1] == 1)
 					return (0);
 				else
-					flags[i][grid[i][j] - 1] = 1;
+					flags[i][grid[i + 1][j + 1] - 1] = 1;
+				printf("\n%d\n", grid[i + 1][j + 1]);
 			}
 			j++;
 		}
 		i++;
 	}
+	//write(1, "flags", 5);
 	return (flags);
 }
 
@@ -161,10 +172,12 @@ char	**ft_init_flags(void)
 	{
 		flags[i] = malloc(4 * sizeof(char));
 		j = 0;
-		while (i < 4)
+		while (j < 4)
 		{
 			flags[i][j] = 0;
+			j++;
 		}
+		i++;
 	}
 	return (flags);
 }
