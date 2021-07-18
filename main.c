@@ -6,7 +6,7 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 00:05:53 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 12:32:26 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 15:11:53 by jhermon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,27 +27,24 @@ int	ft_strlen(char *str)
 		len++;
 		str++;
 	}
-	return len--;
+	return (len--);
 }
 
 int	main(int argc, char **argv)
 {
+	int **views = parse_args(argv[1]);
 	//int	up[] = {2, 2, 1, 3};
 	//int	down[] = {2, 2, 3, 1};
 	//int	left[] = {3, 2, 1, 2};
 	//int	right[] = {2, 2, 3, 1};
-
 	//printf("argc: %d\n", argc);
 	//printf("argv: %s\n", argv[1]);
-	
+
 	if (argc != 2 || ft_strlen(argv[1]) != 31)
 	{
 		write(1, "Error\n", 6);
 		return (1);
 	}
-
-
-	int **views = parse_args(argv[1]);
 	if (!views)
 	{
 		write(1, "Error\n", 6);
@@ -64,8 +61,6 @@ int	main(int argc, char **argv)
 		write(1, "Error\n", 6);
 	printf("\nCompleted:\n");
 	print_grid(grid);
-
-
 	return (0);
 }
 

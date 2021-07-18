@@ -6,7 +6,7 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 04:54:05 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 08:50:08 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 14:52:37 by jhermon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	**ft_rotate_grid(int **grid)
 	int	i;
 	int	j;
 
-	rot = malloc(6 * sizeof(int*));
+	rot = malloc (6 * sizeof (int*));
 	i = 0;
 	while (i < 6)
 	{
@@ -85,8 +85,8 @@ void	print_grid(int **grid)
 
 void	fill_grid(int **grid)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 1;
 	while (i < 5)
@@ -104,10 +104,10 @@ void	fill_grid(int **grid)
 int	**init_grid(int *up, int *down, int *left, int *right)
 {
 	int	**grid;
-	int i;
-	int j;
+	int	i;
+	int	j;
 
-	grid = malloc(6 * sizeof(int*));
+	grid = malloc (6 * sizeof(int*) );
 	i = 0;
 	while (i < 6)
 	{

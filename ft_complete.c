@@ -6,7 +6,7 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 05:15:49 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 14:30:43 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 14:47:53 by jhermon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ int	*ft_init_count(void)
 
 char	ft_check_flags(int **grid)
 {
-	int i;
-	int j;
+	int	i;
+	int	j;
 	char	**flags;
 	int	*count;
 
@@ -72,7 +72,7 @@ char	ft_check_flags(int **grid)
 		while (j < 4)
 		{
 			if (flags[i][j])
-				count[j]++; 
+				count[j]++;
 			j++;
 		}
 		i++;
@@ -92,9 +92,9 @@ char	ft_check_flags(int **grid)
 
 void	ft_complete_num(int **grid, char **flags, int num)
 {
-	int i;
-	int j;
-	int line_found;
+	int	i;
+	int	j;
+	int	line_found;
 	char	found;
 
 	i = 0;
@@ -115,7 +115,7 @@ void	ft_complete_num(int **grid, char **flags, int num)
 					if (grid[i][j] == num)
 					{
 						found = 1;
-						break;
+						break ;
 					}
 					i++;
 				}
@@ -166,7 +166,7 @@ char	**ft_init_flags(void)
 	int	j;
 	char	**flags;
 
-	flags = malloc(4 * sizeof(char*));
+	flags = malloc (4 * sizeof(char*));
 	i = 0;
 	while (i < 4)
 	{
