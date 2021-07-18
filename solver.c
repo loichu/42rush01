@@ -1,19 +1,15 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_solver.c                                        :+:      :+:    :+:   */
+/*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 04:29:20 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 12:24:06 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 20:43:57 by jhermon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include <unistd.h>
-#include <stdio.h>
-#include <stdlib.h>
-#include "main.h"
+#include "functions.h"
 
 char	ft_check_rules(int *line)
 {
@@ -31,7 +27,7 @@ char	ft_check_rules(int *line)
 char	ft_check_lines(int **grid)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (i < 4)

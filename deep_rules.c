@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush01_22.c                                        :+:      :+:    :+:   */
+/*   deep_rules.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: jhermon- <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/18 10:06:41 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/07/18 16:14:40 by jhermon-         ###   ########.fr       */
+/*   Created: 2021/07/18 20:41:11 by jhermon-          #+#    #+#             */
+/*   Updated: 2021/07/18 20:41:26 by jhermon-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-char	regle32b(int *line)
+
+void	ft_rule32b(int *line)
 {
-	if (line[0] == 2 && line[5] == 3 && line[3] == 4)
+	if (line[0] == 3 && line[5] == 2 && line[3] == 4)
 	{
 		if (line[1] == 0 && line[2] == 0)
 		{
@@ -34,7 +35,30 @@ char	regle32b(int *line)
 	}
 }
 
-char	regle22(int *line)
+void	ft_rule32c(int *line)
+{
+	if (line[0] == 3 && line[5] == 2 && line[3] == 4)
+	{
+		if (line[2] == 0 && line[4] == 0)
+		{
+			if (line[1] == 2)
+			{
+				line[2] = 3;
+				line[4] = 1;
+			}
+		}
+		if (line[1] == 0 && line[4] == 0)
+		{
+			if (line[2] == 2)
+			{
+				line[1] = 1;
+				line[4] = 3;
+			}
+		}
+	}
+}
+
+void	ft_rule22(int *line)
 {
 	if (line[0] == 2 && line[5] == 2 && line[3] == 4)
 	{
@@ -59,7 +83,7 @@ char	regle22(int *line)
 	}
 }
 
-char	regle22_b(int *line)
+void	ft_rule22_b(int *line)
 {
 	if (line[0] == 2 && line[5] == 2 && line[3] == 4)
 	{
