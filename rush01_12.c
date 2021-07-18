@@ -6,29 +6,7 @@
 /*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 16:49:30 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/07/17 18:06:09 by vhaefeli         ###   ########.fr       */
+/*   Updated: 2021/07/18 04:23:16 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_bool	regle12(void)
-{
-	if(line[0] == 1 && line[5] == 2)
-	{
-		if(line[1] == 4 || line[1] == 0) 
-		{
-			line[1] = 4;
-		}
-		else 
-		{
-			return (false);
-		}
-		if(line[4] == 3 || line[4] == 0)
-		{
-			line[4] = 3;
-		}
-		else
-		{
-			return (false);
-		}
-	}
-}

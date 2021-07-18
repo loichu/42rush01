@@ -6,31 +6,13 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 16:10:50 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 03:01:31 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 07:24:36 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 
-typedef enum e_bool {false, true} t_bool;
-
-t_bool	rule32(int *line)
-{
-	if (line[0] == 3 && line[5] == 2)
-	{
-		if (line[3] == 0 || line[3] == 3)
-		{
-			line[3] = 3;
-			return (true);
-		}
-		else
-		{
-			return (false);
-		}
-	}
-	return (true);
-}
 
 void	print_grid(int **grid)
 {
