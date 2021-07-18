@@ -6,7 +6,7 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 16:10:50 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/17 19:16:10 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 03:01:31 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,75 +42,77 @@ void	print_grid(int **grid)
 	while (i < 6)
 	{
 		if (i == 5)
-			write(1, "-|----|-\n", 9);
+			write(1, "--|---------|--\n", 16);
 		j = 0;
 		while (j < 6)
 		{
 			if (j == 5)
-				write(1, "|", 1);
+				write(1, "| ", 2);
 			if (grid[i][j] == 0)
-				nb = ' ';
+				nb = 'x';
 			else
 				nb = '0' + grid[i][j];
 			write(1, &nb, 1);
 			if (j == 0)
-				write(1, "|", 1);
+				write(1, " | ", 3);
+			else
+				write(1, " ", 1);
 			j++;
 		}
-		if (i == 0)
-			write(1, "\n-|----|-", 9);
-		i++;
 		write(1, "\n", 1);
+		if (i == 0)
+			write(1, "--|---------|--\n", 16);
+		i++;
 	}
 }
 
-int	**build_grid(int *up, int *down, int *left, int *right)
+void	fill_grid(int **grid)
+{
+	int i;
+	int j;
+
+	i = 1;
+	while (i < 5)
+	{
+		j = 1;
+		while (j < 5)
+		{
+			grid[i][j] = 0;
+			j++;
+		}
+		i++;
+	}
+}
+
+int	**init_grid(int *up, int *down, int *left, int *right)
 {
 	int	**grid;
-	int i; // column
-	int j; // line
+	int i;
+	int j;
 
 	grid = malloc(6 * sizeof(int*));
 	i = 0;
 	while (i < 6)
 	{
 		grid[i] = malloc(6 * sizeof(int));
-		grid[i][0] = left[i - 1];
 		j = 0;
 		while (j < 6)
 		{
-			if (i == 0)
-				grid[i][j] = up[j];
-			else if (i == 5)
-				grid[i][j] = down[j];
-			else if (j > 0 && j < 5)
+			if ((i == 0 || i == 5) && (j == 0 || j == 5))
 				grid[i][j] = 0;
+			else if (i == 0)
+				grid[i][j] = up[j - 1];
+			else if (i == 5)
+				grid[i][j] = down[j - 1];
+			else if (j == 0)
+				grid[i][j] = left[i - 1];
+			else if (j == 5)
+				grid[i][j] = right[i - 1];
 			j++;
 		}
-		if (i > 0 && i < 5)
-			grid[i][5] = right[i - 1];
 		i++;
 	}
-	return grid;
+	fill_grid(grid);
+	return (grid);
 }
 
-int	main(void)
-{
-	int	up[] = {0, 2, 2, 1, 3, 0};
-	int	down[] = {0, 2, 2, 3, 1, 0};
-	int	left[] = {3, 2, 1, 2};
-	int	right[] = {2, 2, 3, 1};
-
-	//while ()
-	//{
-	//	if (!rule32(&line))
-	//	{
-	//		write(1, "Error\n", 6);
-	//		return (1);
-	//	}
-	//}
-
-	int	**grid = build_grid(up, down, left, right);
-	print_grid(grid);
-	return (0);
-}
