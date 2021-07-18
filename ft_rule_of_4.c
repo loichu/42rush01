@@ -6,24 +6,10 @@
 /*   By: jhermon- <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/17 16:18:49 by jhermon-          #+#    #+#             */
-/*   Updated: 2021/07/17 22:08:50 by jhermon-         ###   ########.fr       */
+/*   Updated: 2021/07/18 04:18:56 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_bool	ft_rule_of_4(int *line)
-{
-	if (line[0] == 1) 
-	{
-		if (line[1] = 0 || line[1] = 4)
-		{	
-			line[1] = 4;
-			return true;
-		}
-		else
-			return false;
-	}
-   return true;	
-}
 
 t_bool ft_all_different(int *line)
 {
