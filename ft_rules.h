@@ -1,12 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush01_12.c                                        :+:      :+:    :+:   */
+/*   ft_rules.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/17 16:49:30 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/07/18 04:23:16 by lhumbert         ###   ########.fr       */
+/*   Created: 2021/07/18 07:36:59 by lhumbert          #+#    #+#             */
+/*   Updated: 2021/07/18 09:31:10 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+char	ft_rule32(int *line);
+char	ft_rule1(int *line);
+char	ft_rule12(int *line);
+char	ft_rule4(int *line);

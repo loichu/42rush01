@@ -6,18 +6,15 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 00:05:53 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 03:46:56 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 09:39:24 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include "main.h"
 
-typedef enum e_bool {false, true} t_bool;
-
-int	**init_grid(int *up, int *down, int *left, int *right);
-void	print_grid(int **grid);
 int	**parse_args(char *arg);
 
 int	ft_strlen(char *str)
@@ -68,12 +65,12 @@ int	**parse_args(char *arg)
 	int	**views;
 	int	i;
 	int	j;
-	t_bool	space;
+	char	space;
 
 	views = malloc(4 * sizeof(int*));
 	i = 0;
 	j = 0;
-	space = false;
+	space = 0;
 	views[i] = malloc(4 * sizeof(int));
 	while (*arg)
 	{

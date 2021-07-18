@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   rush01_entree.c                                    :+:      :+:    :+:   */
+/*   ft_complete.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vhaefeli <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/07/17 17:48:34 by vhaefeli          #+#    #+#             */
-/*   Updated: 2021/07/17 18:28:26 by vhaefeli         ###   ########.fr       */
+/*   Created: 2021/07/18 07:42:13 by lhumbert          #+#    #+#             */
+/*   Updated: 2021/07/18 09:37:23 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_bool enter_test_sum(void)
-
-{
-	if(! (line[0] + line[5] > 2 && line[0] + line[5] < 5))
-	{
-		return (false);
-	}
-	else
-	{
-		return (true);
-	}
-}
-
+char	ft_complete(int **grid);
+char	ft_check_flags(int **grid);
+void	ft_complete_num(int **grid, char **flags, int num);
+int	*ft_init_count(void);
+char	**ft_set_flags(int **grid);
+char	**ft_init_flags(void);
+void	ft_free_flags(char **flags);

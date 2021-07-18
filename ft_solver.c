@@ -6,11 +6,28 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 04:29:20 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 05:15:18 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 09:36:39 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_bool	ft_check_lines(char **grid)
+#include <unistd.h>
+#include <stdlib.h>
+#include "main.h"
+
+char	ft_check_rules(int *line)
+{
+	if (!ft_rule4(line))
+		return (0);
+	if (!ft_rule1(line))
+		return (0);
+	if (!ft_rule32(line))
+		return (0);
+	if (!ft_rule12(line))
+		return (0);
+	return (1);
+}
+
+char	ft_check_lines(int **grid)
 {
 	int	i;
 	int j;
@@ -22,24 +39,11 @@ t_bool	ft_check_lines(char **grid)
 		while (j < 5)
 		{
 			if (!ft_check_rules(grid[j]))
-				return (false);
+				return (0);
 			j++;
 		}
 		grid = ft_rotate_grid(grid);
 		i++;
 	}
-	return (true);
-}
-
-t_bool	ft_check_rules(char *line)
-{
-	if (!ft_rule4(line))
-		return (false);
-	if (!ft_rule1(line))
-		return (false);
-	if (!ft_rule32(line))
-		return (false);
-	if (!ft_rule12(line))
-		return (false);
-	return (true);
+	return (1);
 }

@@ -6,11 +6,14 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 05:15:49 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 07:23:57 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 09:38:14 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_bool	ft_complete(char **grid)
+#include <stdlib.h>
+#include "main.h"
+
+char	ft_complete(int **grid)
 {
 	int	i;
 
@@ -19,7 +22,7 @@ t_bool	ft_complete(char **grid)
 	while (i < 2)
 	{
 		if (!ft_check_flags(grid))
-			return (false);
+			return (0);
 		ft_rotate_grid(grid);
 		i++;
 	}
@@ -30,19 +33,19 @@ t_bool	ft_complete(char **grid)
 		ft_rotate_grid(grid);
 		i++;
 	}
-	return (true);
+	return (1);
 }
 
-t_bool	ft_check_flags(char **grid)
+char	ft_check_flags(int **grid)
 {
 	int i;
 	int j;
-	t_bool	**flags;
+	char	**flags;
 	int	count[4];
 
 	flags = ft_set_flags(grid);
 	if (!flags)
-		return false;
+		return (0);
 	i = 0;
 	while (i < 4)
 	{
@@ -64,15 +67,15 @@ t_bool	ft_check_flags(char **grid)
 	}
 	ft_free_flags(flags);
 	free(count);
-	return true;
+	return (0);
 }
 
-void	ft_complete_num(char **grid, t_bool **flags, int num)
+void	ft_complete_num(int **grid, char **flags, int num)
 {
 	int i;
 	int j;
 	int line_found;
-	t_bool	found;
+	char	found;
 
 	i = 0;
 	while (i < 4)
@@ -90,7 +93,7 @@ void	ft_complete_num(char **grid, t_bool **flags, int num)
 				{
 					if (grid[i][j] == num)
 					{
-						found = true;
+						found = 1;
 						break;
 					}
 					i++;
@@ -119,13 +122,13 @@ int	*ft_init_count(void)
 	return count;
 }
 
-t_bool	**ft_set_flags(char **grid)
+char	**ft_set_flags(int **grid)
 {
 	int	i;
 	int	j;
-	t_bool	**flags;
+	char	**flags;
 
-	flags = init_flags();
+	flags = ft_init_flags();
 	i = 0;
 	while (i < 4)
 	{
@@ -137,35 +140,36 @@ t_bool	**ft_set_flags(char **grid)
 				if (flags[i][grid[i][j] - 1])
 					return (0);
 				else
-					flags[i][grid[i][j] - 1] = true;
+					flags[i][grid[i][j] - 1] = 1;
 			}
 			j++;
 		}
 		i++;
 	}
+	return (flags);
 }
 
-t_bool	**ft_init_flags(void)
+char	**ft_init_flags(void)
 {
 	int	i;
 	int	j;
-	t_bool	**flags;
+	char	**flags;
 
-	flags = malloc(4 * sizeof(t_bool*));
+	flags = malloc(4 * sizeof(char*));
 	i = 0;
 	while (i < 4)
 	{
-		flags[i] = malloc(4 * sizeof(t_bool));
+		flags[i] = malloc(4 * sizeof(char));
 		j = 0;
 		while (i < 4)
 		{
-			flags[i][j] = false;
+			flags[i][j] = 0;
 		}
 	}
 	return (flags);
 }
 
-void	ft_free_flags(t_bool *flags)
+void	ft_free_flags(char **flags)
 {
 	int	i;
 
