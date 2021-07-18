@@ -6,7 +6,7 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 05:15:49 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 15:36:15 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 16:25:01 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,14 @@ char	ft_complete(int **grid)
 	i = 0;
 	while (i < 2)
 	{
+		//printf("\ncomplete %d", i);
+		write(1, "\ncomplete\n", 10);
 		if (!ft_check_flags(grid))
 			return (0);
 		write(1, "\n\n", 2);
-		//printf("%d\n", )
+		//printf("%d\n", i);
 		print_grid(grid);
-		ft_rotate_grid(grid);
+		grid = ft_rotate_grid(grid);
 		write(1, "\n\n", 2);
 		print_grid(grid);
 		i++;
@@ -37,7 +39,7 @@ char	ft_complete(int **grid)
 	i = 0;
 	while (i < 2)
 	{
-		ft_rotate_grid(grid);
+		grid = ft_rotate_grid(grid);
 		i++;
 	}
 	return (1);
@@ -105,7 +107,8 @@ char	ft_check_flags(int **grid)
 	}
 	free(count);
 	ft_free_flags(flags);
-	return (0);
+	write(1, "\n\tafter", 7);
+	return (1);
 }
 
 void	ft_complete_num(int **grid, char **flags, int num)
@@ -151,6 +154,7 @@ void	ft_complete_num(int **grid, char **flags, int num)
 			i++;
 		}
 	}
+	//print_grid(grid);
 }
 
 char	**ft_set_flags(int **grid)
