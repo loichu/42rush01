@@ -6,7 +6,7 @@
 /*   By: lhumbert <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/07/18 05:15:49 by lhumbert          #+#    #+#             */
-/*   Updated: 2021/07/18 14:30:43 by lhumbert         ###   ########.fr       */
+/*   Updated: 2021/07/18 15:36:15 by lhumbert         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,12 @@ char	ft_complete(int **grid)
 	{
 		if (!ft_check_flags(grid))
 			return (0);
+		write(1, "\n\n", 2);
+		//printf("%d\n", )
+		print_grid(grid);
 		ft_rotate_grid(grid);
+		write(1, "\n\n", 2);
+		print_grid(grid);
 		i++;
 	}
 	// Put the grid back in the correct position
@@ -53,18 +58,13 @@ int	*ft_init_count(void)
 	return (count);
 }
 
-char	ft_check_flags(int **grid)
+int	*ft_count_nums(char **flags)
 {
+	int	*count;
 	int i;
 	int j;
-	char	**flags;
-	int	*count;
 
 	count = ft_init_count();
-	flags = ft_set_flags(grid);
-	if (!flags)
-		return (0);
-	//write(1, "set flags", 9);
 	i = 0;
 	while (i < 4)
 	{
@@ -77,7 +77,25 @@ char	ft_check_flags(int **grid)
 		}
 		i++;
 	}
-	printf("\n%d\t%d\t%d\t%d", count[0], count[1], count[2], count[3]);
+	return (count);
+}
+
+char	ft_check_flags(int **grid)
+{
+	int i;
+	int j;
+	char	**flags;
+	int	*count;
+
+	flags = ft_set_flags(grid);
+	if (!flags)
+	{
+		printf("flag error");
+		return (0);
+	}
+	count = ft_count_nums(flags);
+	//write(1, "set flags", 9);
+	//printf("\n%d\t%d\t%d\t%d", count[0], count[1], count[2], count[3]);
 	j = 0;
 	while (j < 4)
 	{
@@ -103,15 +121,16 @@ void	ft_complete_num(int **grid, char **flags, int num)
 		// Search line without num
 		if (!flags[i][num - 1])
 		{
-			line_found = i;
-			j = 0;
-			while (j < 4)
+			line_found = i + 1;
+			j = 1;
+			while (j < 5)
 			{
+				found = 0;
 				// Iterate by column
-				i = 0;
-				while (i < 4)
+				i = 1;
+				while (i < 5)
 				{
-					printf("\nline: %d\tcol: %d\tval: %d", i, j, grid[i][j]);
+					//printf("\nline: %d\tcol: %d\tval: %d", i, j, grid[i][j]);
 					if (grid[i][j] == num)
 					{
 						found = 1;
@@ -121,13 +140,16 @@ void	ft_complete_num(int **grid, char **flags, int num)
 				}
 				if (!found)
 				{
-					printf("found %d", grid[line_found][j]);
+					//printf("found %d", grid[line_found][j]);
 					grid[line_found][j] = num;
 				}
 				j++;
 			}
 		}
-		i++;
+		else
+		{
+			i++;
+		}
 	}
 }
 
@@ -150,7 +172,7 @@ char	**ft_set_flags(int **grid)
 					return (0);
 				else
 					flags[i][grid[i + 1][j + 1] - 1] = 1;
-				printf("\n%d\n", grid[i + 1][j + 1]);
+				//printf("\n%d\n", grid[i + 1][j + 1]);
 			}
 			j++;
 		}
